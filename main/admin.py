@@ -27,4 +27,6 @@ class SizeAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Size, SizeAdmin)
+
 admin.site.register(Product, ProductAdmin)
+
