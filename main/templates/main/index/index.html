@@ -1,0 +1,37 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}HOME{% endblock title %}
+
+{% block content %}
+    <section class="home d-flex flex-column">
+        <div class="home-title d-flex flex-column align-items-center">
+            <a href="#" class='mt-4 home-btn'>ALL PRODUCTS</a>
+        </div>
+        <div class="home-recomend">
+            <div class="reg-title mb-4">
+                <h3><span>Popular Cars</span></h3>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row g-4 justify-content-center">
+                {% for product in products %} 
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                        <a href="{{product.get_absolute_url}}" class='home-card-item d-flex flex-column align-items-center text-center text-decoration-none p-3'>
+                            <img class='card-img mb-3' src="{% if product.image %}{{product.image.url}}{% else %}{% static 'img/no-image.jpg' %}{% endif %}" alt="{{product.name}}">
+                            <h5 class='title-card'>{{product.name}}</h5>
+                            {% if product.discount %}
+                            <div class="cart-discount d-flex flex-column align-items-center gap-1">
+                                <p class='line text-decoration-line-through mb-0 text-muted'>{{product.price}}</p> 
+                                <p class='mb-0 fw-bold'>{{product.sell_price}}</p> 
+                            </div>
+                            {% else %}
+                                <p class="price mb-0 fw-bold">{{product.price}}</p> 
+                            {% endif %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock content %}

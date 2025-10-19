@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"> 
+</head>
+<body>
+    <header class="header sticky-top">
+        <div class="container-fluid px-3 px-md-4 px-lg-5">
+            <div class="row align-items-center py-3">
+                <!-- Левая колонка - навигация -->
+                <div class="col-4">
+                    <nav>
+                        <ul class='list-inline mb-0'>
+                            <li class="list-inline-item me-2 me-md-3 me-lg-5 ps-2 ps-md-4"><a href="/" class='nav-li'>Home</a></li>
+                            <li class="list-inline-item"><a href="/shop" class='nav-li'>Shop</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Центральная колонка - лого -->
+                <div class="col-4 text-center">
+                    <a href="/"><img src="{% static 'img/logo.img' %}" alt="Logo" class='logo'></a>
+                </div>
+                
+                <!-- Правая колонка - профиль и корзина -->
+                <div class="col-4 text-end nav-li d-flex align-items-center justify-content-end gap-3">
+                    <a href="{% url 'cart:detail' %}" class="position-relative text-decoration-none">
+                        <img src="{% static 'img/cart.png' %}" alt="Cart" class='bascket-img'>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {% with cart_quantity=cart|length %}
+                                {% if cart_quantity > 0 %}
+                                    {{ cart_quantity }}
+                                {% else %}
+                                    0
+                                {% endif %}
+                            {% endwith %}
+                        </span>
+                    </a>
+                    <a href="#" class="login-link text-decoration-none">Login</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container-fluid">
+        {% block content %}
+        {% endblock content %}
+    </div>
+    
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

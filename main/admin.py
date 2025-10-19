@@ -1,32 +1,20 @@
 from django.contrib import admin
 
-from .models import Category, Size, Product, ProductImage, ProductSize
+from .models import Category, Product
 
 # Register your models here.
-class ProductImageInline(admin.TabularInline):
-    model = ProductImage
-    extra = 1
-    
-class ProductSizeline(admin.TabularInline):
-    model = ProductSize
-    extra = 1
-
+@admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'category', 'color', 'price']
-    list_filter = ['category', 'color']
-    search_fields = ['name', 'color', 'description']
+    list_display = ['name', 'category', 'slug', 'price', 'created', 'uploaded', 'discount', 'available']
+    list_filter = ['available', 'created', 'uploaded']
+    list_editable = ['price', 'available', 'discount']
+    search_fields = ['name', 'price', 'description']
     prepopulated_fields = {'slug':('name',)}
-    inlines = [ProductImageInline, ProductSizeline]
 
+@admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['name', 'slug']
     prepopulated_fields = {'slug':('name',)}
 
-class SizeAdmin(admin.ModelAdmin):
-    list_display = ['name']
 
-admin.site.register(Category, CategoryAdmin)
-admin.site.register(Size, SizeAdmin)
-
-admin.site.register(Product, ProductAdmin)
 

@@ -1,0 +1,35 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{product.name}}
+{% endblock title %}
+
+{% block content %}
+    <div class="detail-product d-flex flex-column flex-md-row container"> 
+        <div class="detail-img flex-shrink-0">
+            <img src="{% if product.image %}{{product.image.url}}{% else %}{% static 'img/no-image.jpg' %}{% endif %}" alt="{{product.name}}" class="img-fluid"> 
+        </div>
+        <div class="detail-description flex-grow-1 ms-0 ms-md-4 mt-4 mt-md-0"> 
+            <h2>{{product.name}}</h2>
+            <h3>Category: {{product.category}}</h3>
+            <p>Description: {{product.description|linebreaks}}</p>
+            {% if product.discount %}
+            <div class="cart-discount d-flex gap-2 align-items-center">
+                <p class='line text-decoration-line-through mb-0'>{{product.price}}</p> 
+                <p class='mb-0'>{{product.sell_price}}</p> 
+            </div>
+            {% else %}
+                <p class="price mb-0">{{product.price}}</p> 
+            {% endif %}
+            <form action="{% url 'cart:add' product.id %}" method="post" class='qform'>
+            <div class="cart-form">
+                {{cart_product_form}}
+                {% csrf_token %}
+            </div>
+            <input type="submit" class='add-to-cart-btn' value='Add to cart'>
+            </form>
+            {% comment %} <a href="#" class='cart-btn d-flex align-items-center justify-content-center mt-3'>Add to cart</a>  {% endcomment %}
+        </div>
+    </div>
+{% endblock content %}

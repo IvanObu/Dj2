@@ -1,0 +1,73 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Shop{% endblock title %}
+
+{% block content %}
+<div class="list d-flex flex-column flex-md-row container-fluid"> 
+    <div class="sidebar flex-shrink-0 me-5">
+        <h3>Categories</h3>
+        <ul class="list-unstyled"> 
+            <li{% if not category %} class="selected"{% endif %}>
+                <a href="{% url 'main:product_list' %}">All</a> 
+            </li>
+            {% for c in categories %}
+                <li{% if category.slug == c.slug %} class="selected"{% endif %}>
+                    <a href="{{c.get_absolute_url}}">{{c.name}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="content-main flex-grow-1"> 
+        <div class="main-title mb-4">
+            {% if category %}{{category.name}}{% else %}Products{% endif %}
+        </div>
+        <div class="product-list">
+            <div class="items row g-4">
+                {% for product in products %}
+                    <div class="item col-12 col-sm-6 col-md-4 col-lg-3"> 
+
+                        <a href="{{product.get_absolute_url}}" class='shop-card d-flex flex-column align-items-center text-center text-decoration-none p-3'> 
+                            <img src="{% if product.image %}{{product.image.url}}{% else %}{% static 'img/no-image.jpg' %}{% endif %}" class='card-img mb-3' alt="{{product.name}}">
+                            <h5 class='title-card mb-3'>{{product.name}}</h5>
+                            {% if product.discount %}
+                            <div class="cart-discount d-flex flex-column align-items-center gap-1"> 
+                                <p class='line text-decoration-line-through mb-0 text-muted'>{{product.price}}</p> 
+                                <p class='mb-0 fw-bold fs-5'>{{product.sell_price}}</p> 
+                            </div>
+                            {% else %}
+                                <p class="price mb-0 fw-bold fs-5">{{product.price}}</p> 
+                            {% endif %}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <ul class='pagination'>
+            <li class='{% if not products.has_previous %} disabled {% endif %}'>
+                {% if products.has_previous %}
+                    <a href="?page={{ products.previous_page_number }}">Previous</a>
+                {% else %}
+                    <span>Previous</span>
+                {% endif %}
+            </li>
+        
+            {% for page in products.paginator.page_range %}
+                {% if page >= products.number|add:-2 and page <= products.number|add:2 %}
+                    <li class='{% if page == products.number %} active {% endif %}'>
+                        <a href="?page={{ page }}">{{ page }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+            
+            <li class='{% if not products.has_next %} disabled {% endif %}'>
+                {% if products.has_next %}
+                    <a href="?page={{ products.next_page_number }}">Next</a>
+                {% else %}
+                    <span>Next</span>
+                {% endif %}
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock content %}

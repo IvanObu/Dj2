@@ -1,0 +1,559 @@
+@import url(https://fonts.googleapis.com/css2?family=Audiowide&display=swap);
+
+:root {
+    --box-shadow: 0px 1.5px 1px rgba(0, 0, 0, 0.263);
+}
+
+.nav-li{
+    font-size: 30px;
+}
+
+body {
+    font-family: "Audiowide", sans-serif;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    padding: 0;
+    color: black;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 28px;
+}
+
+h5 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.header {
+    box-sizing: border-box;
+    height: 100px;
+    box-shadow: var(--box-shadow);
+    margin: 0 auto;
+    padding: 0 25px;
+    background-color: #fffffff4;
+    margin-bottom: 15px;
+}
+
+.container {
+    box-sizing: border-box;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.logo {
+    height: 80px;
+    max-width: 100%;
+}
+
+.home {
+    align-items: center;
+    padding: 20px 0;
+}
+
+.home-cards-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Стили для отдельных карточек на главной */
+.home-card-item {
+    border: 1px solid rgb(40, 40, 40);
+    border-radius: 2px;
+    transition: all 0.5s ease;
+    background-color: rgb(235, 232, 232);
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    width: 100%;
+    max-width: 280px;
+}
+
+.home-card-item:hover {
+    border: 2px solid black;
+    transform: translateY(-5px);
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Общие стили для картинок */
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Стили для заголовков */
+.title-card {
+    max-width: 100%;
+    margin-top: 15px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+/* Стили для карточек на главной странице */
+.home-card {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    min-height: 500px;
+    border: 1px solid rgb(40, 40, 40);
+    border-radius: 2px;
+    transition: all 0.5s ease;
+    background-color: rgb(235, 232, 232);
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.home-card:hover {
+    border: 2px solid black;
+    transform: translateY(-5px);
+}
+
+/* Стили для карточек в магазине */
+.shop-card {
+    border: 1px solid rgb(40, 40, 40);
+    border-radius: 2px;
+    transition: all 0.5s ease;
+    background-color: rgb(235, 232, 232);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+}
+
+.shop-card:hover {
+    border: 2px solid black;
+    transform: translateY(-5px);
+    text-decoration: none;
+    color: inherit;
+}
+
+.title-card {
+    max-width: 100%;
+    margin-top: 15px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+.detail-img img {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 500px;
+    object-fit: contain !important;
+}
+
+.detail-product {
+    margin-top: 40px;
+    padding: 20px;
+}
+
+.detail-description {
+    margin-left: 0;
+    margin-top: 20px;
+}
+
+.detail-description p {
+    margin-top: 20px;
+    min-width: auto;
+    max-width: 100%;
+    font-size: 16px;
+}
+
+.detail-description h2 span {
+    font-size: 36px;
+}
+
+.cart-discount {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.cart-discount .price {
+    margin-top: 1px;
+}
+
+.cart-discount .line {
+    color: #6c757d;
+    font-size: 14px;
+}
+
+
+.content-main {
+    padding-left: 20px;
+}
+.main-title{
+    font-size: 20px;
+}
+/* Стили для сайдбара */
+.sidebar {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    width: 250px; /* Фиксированная ширина */
+    margin-right: 30px;
+}
+
+.sidebar h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    color: #333;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 5px 0;
+}
+
+.sidebar ul li a:hover {
+    color: #04498e;
+}
+
+.sidebar ul li.selected a {
+    color: #0b5095;
+    font-weight: bold;
+}
+
+/* Стили для сетки товаров */
+/* Исправленные стили для сетки товаров */
+.items.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item {
+    display: flex;
+}
+
+.shop-card {
+    border: 1px solid rgb(40, 40, 40);
+    border-radius: 2px;
+    transition: all 0.5s ease;
+    background-color: rgb(235, 232, 232);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    width: 100%;
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.title-card {
+    max-width: 100%;
+    margin-top: 15px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Стили для кнопок */
+.home-btn, .cart-btn {
+    background-color: #000;
+    color: #fff;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 2px;
+    font-family: "Audiowide", sans-serif;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.home-btn:hover, .cart-btn:hover {
+    background-color: #333;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.reg-title h3 span {
+    border-bottom: 2px solid #000;
+    padding-bottom: 5px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    h1 {
+        font-size: 36px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    h3 {
+        font-size: 22px;
+    }
+    
+    .header {
+        height: auto;
+        padding: 10px 0;
+    }
+    
+    .logo {
+        height: 60px;
+    }
+    
+    .home-card, .shop-card {
+        max-width: 100%;
+        min-height: 400px;
+    }
+    
+    .card-img {
+        height: 180px;
+    }
+    
+    .detail-product {
+        margin-top: 20px;
+    }
+    
+    .sidebar {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .content-main {
+        padding-left: 0 !important;
+    }
+}
+
+/* Дополнительные улучшения для цен */
+.cart-discount {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.cart-discount .line {
+    font-size: 14px;
+}
+
+.cart-discount p:last-child {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    margin-top: 15px;
+}
+
+.pagination li {
+    margin: 0;
+}
+
+.pagination li a,
+.pagination li span {
+    padding: 8px 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+    font-family: "Audiowide", sans-serif;
+    display: block;
+}
+
+.pagination li.active a {
+    background-color: #000;
+    color: #fff;
+    border-color: #000;
+}
+
+.pagination li.disabled span {
+    background-color: #f5f5f5;
+    color: #999;
+    border-color: #ddd;
+    cursor: not-allowed;
+}
+
+.pagination li a:hover {
+    background-color: #f5f5f5;
+    border-color: #000;
+}
+
+
+/* BASCKET */
+.bascket-img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.badge {
+    font-size: 0.7em;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.bascket-img:hover {
+    transform: scale(1.1);
+}
+
+.cart_quantity {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+
+.col-4.text-end.nav-li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    position: relative;
+}
+
+
+.col-4.text-end.nav-li a:first-child {
+    position: relative;
+    display: inline-block;
+}
+
+.cart {
+    background-color: #f8f9fa;
+    min-height: 80vh;
+}
+
+.cart-card {
+    transition: transform 0.2s ease;
+    border-radius: 10px;
+}
+
+.cart-card:hover {
+    transform: translateY(-2px);
+}
+
+.cart-card-img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.cart-header h1 {
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.empty-cart {
+    background: white;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.total-card {
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+}
+
+.remove-btn {
+    transition: all 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+.cart-btn {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.text-success {
+    color: #28a745 !important;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .cart-header h1 {
+        font-size: 2rem;
+    }
+    
+    .cart-card .card-body {
+        text-align: center;
+    }
+    
+    .cart-card-img {
+        margin-bottom: 1rem;
+    }
+}
