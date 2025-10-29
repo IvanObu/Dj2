@@ -9,21 +9,31 @@ def popular_list(requset):
     products = Product.objects.filter(available=True)[:4]
     return render(requset, 'main/index/index.html', {'products':products})
 
-def product_datail(request, slug):
+def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, available=True)
     cart_product_form = CartAddProductForm
     return render(request, 'main/product/detail.html', {'product':product, 'cart_product_form':cart_product_form})
 
 def product_list(request, category_slug=None):
     page = request.GET.get('page', 1)
-    category=None
+    category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
-    paginator = Paginator(products, 2)
-    current_page = paginator.page(int(page))
+    
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
-        paginator = Paginator(products.filter(category=category))
+        products = products.filter(category=category) 
+    
+    paginator = Paginator(products, 2) 
+    
+    try:
         current_page = paginator.page(int(page))
+    except:
+        current_page = paginator.page(1)
 
-    return render(request, 'main/product/list.html', {'category':category, 'categories': categories, 'products':current_page, 'slug_url': category_slug})
+    return render(request, 'main/product/list.html', {
+        'category': category, 
+        'categories': categories, 
+        'products': current_page, 
+        'slug_url': category_slug
+    })

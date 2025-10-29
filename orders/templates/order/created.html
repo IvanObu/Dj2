@@ -1,0 +1,15 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Order created{% endblock title %}
+
+{% block content %}
+<div class="order-confirmed">
+    <div class="success-icon">✓</div>
+    <h1>Order Confirmed!</h1>
+    <div class="confirmation-message">
+        <a href="{% url 'main:product_list' %}" class="continue-shopping">
+            Continue Shopping
+        </a>
+    </div>
+</div>
+{% endblock content %}

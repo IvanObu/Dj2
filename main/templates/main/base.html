@@ -12,9 +12,9 @@
 <body>
     <header class="header sticky-top">
         <div class="container-fluid px-3 px-md-4 px-lg-5">
-            <div class="row align-items-center py-3">
+            <div class="row align-items-center">
                 <!-- Левая колонка - навигация -->
-                <div class="col-4">
+                <div class="col-4" >
                     <nav>
                         <ul class='list-inline mb-0'>
                             <li class="list-inline-item me-2 me-md-3 me-lg-5 ps-2 ps-md-4"><a href="/" class='nav-li'>Home</a></li>
@@ -24,27 +24,38 @@
                 </div>
                 
                 <!-- Центральная колонка - лого -->
-                <div class="col-4 text-center">
+                <div class="col-4 text-center logo-div">
                     <a href="/"><img src="{% static 'img/logo.img' %}" alt="Logo" class='logo'></a>
                 </div>
                 
                 <!-- Правая колонка - профиль и корзина -->
-                <div class="col-4 text-end nav-li d-flex align-items-center justify-content-end gap-3">
-                    <a href="{% url 'cart:detail' %}" class="position-relative text-decoration-none">
-                        <img src="{% static 'img/cart.png' %}" alt="Cart" class='bascket-img'>
-                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                            {% with cart_quantity=cart|length %}
-                                {% if cart_quantity > 0 %}
-                                    {{ cart_quantity }}
-                                {% else %}
-                                    0
-                                {% endif %}
-                            {% endwith %}
-                        </span>
-                    </a>
-                    <a href="#" class="login-link text-decoration-none">Login</a>
+                <div class="col-4 text-end">
+                    <div class="d-flex align-items-center justify-content-end ">
+                        <div class="position-relative bascket">
+                            <a href="{% url 'cart:detail' %}" class="text-decoration-none ">
+                                <img src="{% static 'img/cart.png' %}" alt="Cart" class='bascket-img'>
+                            </a>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge" style="margin-left: -10px">
+                                {% with cart_quantity=cart|length %}
+                                    {% if cart_quantity > 0 %}
+                                        {{ cart_quantity }}
+                                    {% else %}
+                                        0
+                                    {% endif %}
+                                {% endwith %}
+                            </span>
+                        </div>
+                        {% if user.is_authenticated %}
+                            <div class="d-flex align-items-center gap-2">
+                                <a href="{% url 'users:profile' %}" class="nav-li">Profile</a>
+                                <span class="text-muted">|</span>
+                                <a href="{% url 'users:logout' %}" class="nav-li">Logout</a>
+                            </div>
+                        {% else %}
+                            <a href="{% url 'users:login' %}" class="nav-li">Login</a>
+                        {% endif %}
+                    </div>
                 </div>
-            </div>
         </div>
     </header>
     

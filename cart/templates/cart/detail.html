@@ -102,7 +102,7 @@
                                 <a href="/shop" class='cart-btn btn btn-outline-secondary'>Continue Shopping</a>
                                 {% with cart_quantity=cart|length %}
                                     {% if cart_quantity > 0 %}
-                                        <a href="#" class='cart-btn btn btn-primary'>Proceed to Checkout</a>
+                                        <a href="{% url "orders:order_create" %}" class='cart-btn btn btn-primary'>Proceed to Checkout</a>
                                     {% endif %}
                                 {% endwith %}
                             </div>

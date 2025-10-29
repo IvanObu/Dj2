@@ -1,0 +1,112 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Registration{% endblock title %}
+
+{% block content %}
+    <section class="login-reg d-flex" style="padding-left: 4%; padding-right: 4%; margin-top: 20px;">
+        <div class="login-title">
+            <h2>Create Account</h2>
+
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form action="{% url 'user:register' %}" method="post">
+                {% csrf_token %}
+
+                <div class="row">
+                    <!-- First Name -->
+                    <div class="col--md-6 md-3">
+                        <label for="id_first_name" class="form-label">First Name</label>
+                        <input type="text" class="form-control form-stylereg" 
+                               name="first_name" id="id_first_name" 
+                               placeholder="Your first name" 
+                               value="{% if form.first_name.value %}{{ form.first_name.value }}{% endif %}"
+                               required>
+                        {% if form.first_name.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{ form.first_name.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Last Name -->
+                    <div class="col--md-6 md-3">
+                        <label for="id_last_name" class="form-label">Last Name</label>
+                        <input type="text" class="form-control form-stylereg" 
+                               name="last_name" id="id_last_name" 
+                               placeholder="Your last name" 
+                               value="{% if form.last_name.value %}{{ form.last_name.value }}{% endif %}"
+                               required>
+                        {% if form.last_name.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{ form.last_name.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Username -->
+                    <div class="col--md-6 md-3">
+                        <label for="id_username" class="form-label">Username</label>
+                        <input type="text" class="form-control form-stylereg" 
+                               name="username" id="id_username" 
+                               placeholder="Choose a username" 
+                               value="{% if form.username.value %}{{ form.username.value }}{% endif %}"
+                               required>
+                        {% if form.username.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{ form.username.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="col--md-6 md-3">
+                        <label for="id_email" class="form-label">Email</label>
+                        <input type="email" class="form-control form-stylereg" 
+                               name="email" id="id_email" 
+                               placeholder="your.email@example.com" 
+                               value="{% if form.email.value %}{{ form.email.value }}{% endif %}"
+                               required>
+                        {% if form.email.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{ form.email.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Password 1 -->
+                    <div class="col--md-6 md-3">
+                        <label for="id_password1" class="form-label">Password</label>
+                        <input type="password" class="form-control form-stylereg" 
+                               name="password1" id="id_password1" 
+                               placeholder="Create a password" required>
+                        {% if form.password1.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{ form.password1.errors }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Password 2 -->
+                    <div class="col--md-6 md-3">
+                        <label for="id_password2" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control form-stylereg" 
+                               name="password2" id="id_password2" 
+                               placeholder="Repeat your password" required>
+                        {% if form.password2.errors %}
+                            <div class="alert alert-danger alert-dismissible fade show">{{ form.password2.errors }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <button type='submit' class="login-btn">Create Account</button>
+            </form>
+            
+            <div class="reset-pass">
+                <hr>
+                <div class="mt-3 text-center">
+                    <span>Already have an account? </span>
+                    <a href="{% url 'user:login' %}">Sign In</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
